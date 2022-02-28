@@ -37,6 +37,9 @@ public class Main {
             System.out.println("2. Thêm mới sản phẩm Cripsy Flour");
             System.out.println("3. Thêm mới sản phẩm Meat");
             System.out.println("4. Xóa sản phẩm theo tên");
+            System.out.println("5. Sửa sản phẩm CrispyFlour");
+            System.out.println("6. Sửa sản phẩm Meat");
+            System.out.println("7. Tính tiền theo tên sản phẩm nhập vào: ");
             System.out.println("0. Exit");
             choice = inputChoice.nextInt();
             switch (choice) {
@@ -52,7 +55,15 @@ public class Main {
                 case 4:
                     Methods.deleteProduct(materials);
                     break;
-
+                case 5:
+                    Methods.editCrispyFlour(materials);
+                    break;
+                case 6:
+                    Methods.editMeat(materials);
+                    break;
+                case 7:
+                    Methods.payProduct(materials);
+                    break;
                 case 0:
                     System.exit(0);
                 default:

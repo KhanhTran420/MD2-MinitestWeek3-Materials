@@ -3,9 +3,12 @@ import java.time.LocalDate;
 public class Meat extends Material implements Discount {
     private double weight;
 
-    public Meat(){};
+    public Meat() {
+    }
 
-    public Meat(double weight){
+    ;
+
+    public Meat(double weight) {
         this.weight = weight;
     }
 
@@ -22,37 +25,47 @@ public class Meat extends Material implements Discount {
         this.weight = weight;
     }
 
-    public double getAmount(){
+    public double getAmount() {
         double result = getCost() * weight;
         return result;
     }
 
-    public LocalDate getExpiryDate(){
+    public LocalDate getExpiryDate() {
         LocalDate expiry = getManufacturingDate().plusDays(7);
         return expiry;
     }
 
-    public double getRealMoney(){
-        double expiryMeat;
-        LocalDate expiriday = getExpiryDate();
-        LocalDate discountMeat30 = getExpiryDate().minusDays(5);
+//    public double getRealMoney(){
+//        double expiryMeat;
+//        LocalDate expiriday = getExpiryDate();
+//        LocalDate discountMeat30 = getExpiryDate().minusDays(5);
+//        LocalDate today = LocalDate.now();
+//
+//        if (today.isBefore(expiriday)){
+//            if (today.isAfter(discountMeat30)){
+//                expiryMeat = getAmount() - (getAmount()*30)/100;
+//                return expiryMeat;
+//            } else {
+//                 expiryMeat= getAmount() - (getAmount()*10)/100;
+//                return expiryMeat;
+//            }
+//        } else {
+//            System.out.println("OUT OF EXPIRY");
+//            return expiryMeat = 0;
+//        }
+
+    public double getRealMoney() {
         LocalDate today = LocalDate.now();
-
-        if (today.isBefore(expiriday)){
-            if (today.isAfter(discountMeat30)){
-                expiryMeat = getAmount() - (getAmount()*30)/100;
-                return expiryMeat;
-            } else {
-                 expiryMeat= getAmount() - (getAmount()*10)/100;
-                return expiryMeat;
-            }
-        } else {
-            System.out.println("OUT OF EXPIRY");
-            return expiryMeat = 0;
+        LocalDate expiry = getExpiryDate();
+        double realMoney = 0;
+        if (today.plusDays(5).isEqual(expiry) || today.plusDays(5).isAfter(expiry)) {
+            realMoney = getAmount() - getAmount()/100*30;
+        } else if (today.plusDays(5).isBefore(expiry)) {
+            realMoney = getAmount() - getAmount()/100*10;
         }
-
-
+        return realMoney;
     }
+
 
     @Override
     public String toString() {
