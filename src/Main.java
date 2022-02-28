@@ -1,5 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
@@ -40,6 +42,8 @@ public class Main {
             System.out.println("5. Sửa sản phẩm CrispyFlour");
             System.out.println("6. Sửa sản phẩm Meat");
             System.out.println("7. Tính tiền theo tên sản phẩm nhập vào: ");
+            System.out.println("8. Chênh lệch chiết khấu theo sản phẩm: ");
+            System.out.println("9. Sắp xếp sản phẩm theo giá: ");
             System.out.println("0. Exit");
             choice = inputChoice.nextInt();
             switch (choice) {
@@ -64,6 +68,15 @@ public class Main {
                 case 7:
                     Methods.payProduct(materials);
                     break;
+                case 8 :
+                    Methods.differenceDiscount(materials);
+                    break;
+                case 9:
+                    Collections.sort(materials);
+                    Methods.sortCostMaterials(materials);
+                    break;
+
+
                 case 0:
                     System.exit(0);
                 default:

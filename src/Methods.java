@@ -206,5 +206,35 @@ public class Methods {
         }
     }
 
+    public static void differenceDiscount(ArrayList<Material> arr){
+            Scanner inputProductToViewDiscount = new Scanner(System.in);
+        System.out.println("Nhập tên sản phẩm bạn muốn xem chênh lệch chiết khấu: ");
+        String product = inputProductToViewDiscount.nextLine();
+
+        for (int i = 0; i < arr.size() ; i++) {
+            if (arr.get(i).getName().equals(product)){
+                if (arr.get(i) instanceof CrispyFlour){
+                    double result = arr.get(i).getAmount()-((CrispyFlour)arr.get(i)).getRealMoney();
+                    System.out.println("Chênh lệch chết khấu trong ngày hôm nay là: " + result);
+                }
+                if (arr.get(i) instanceof Meat){
+                    double result = arr.get(i).getAmount() - ((Meat)arr.get(i)).getRealMoney();
+                    System.out.println("Chênh lệch chiết khấu trong ngày hôm nay là: " + result);
+                }
+            }
+        }
+    }
+
+    public static void sortCostMaterials (ArrayList<Material> arr) {
+        for (Material e: arr
+        ) {
+            System.out.println(e);
+        }
+    }
+
+
+
+
+
 
 }

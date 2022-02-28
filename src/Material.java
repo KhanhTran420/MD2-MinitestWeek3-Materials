@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 
-public abstract class Material {
+
+public abstract class Material implements Comparable<Material> {
     private String id;
     private String name;
     private LocalDate manufacturingDate;
@@ -15,6 +16,15 @@ public abstract class Material {
         this.manufacturingDate = manufacturingDate;
         this.cost = cost;
     }
+
+
+    @Override
+    public int compareTo(Material o) {
+        return this.cost - o.cost;
+    }
+
+
+
 
     public String getId() {
         return id;
@@ -47,6 +57,8 @@ public abstract class Material {
     public void setCost(int cost) {
         this.cost = cost;
     }
+
+
 
     public abstract double getAmount();
     public abstract LocalDate getExpiryDate();
